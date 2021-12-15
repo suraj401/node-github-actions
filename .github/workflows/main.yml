@@ -1,29 +1,20 @@
 # This is a basic workflow to help you get started with Actions
-
-name: CD
-
-# Controls when the action will run. 
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
-jobs: 
-  deploy:
-    # The type of runner that the job will run on
+    branches:
+      - master
+jobs:
+  build:
+    name: Deploy
     runs-on: self-hosted
+    steps:
+      - name: Checkout master
+        uses: actions/checkout@master
 
-push_on_rancher:
+  push_on_rancher:
   runs-on: self-hosted
-  needs: push_on_docker
+  env:
+    KUBECONFIG: ${{ secrets.KUBECONFIG }}
   steps:
-    - name: 'Status'
-      run: kubectl get all
     - name: 'Deploy'
       run: kubectl apply -f deployment.yaml
