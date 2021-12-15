@@ -10,9 +10,6 @@ jobs:
     steps:
       - name: Checkout master
         uses: actions/checkout@master
-      - name: kube-config-cred
-        env:
-          KUBECONFIG: ${{ secrets.KUBECONFIG }}
         run: kubectl get pods
       - name: 'Deploy'
         run: kubectl apply -f deployment.yaml
