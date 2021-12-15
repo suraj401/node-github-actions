@@ -18,8 +18,8 @@ jobs:
 push_on_rancher:
   runs-on: self-hosted
   needs: push_on_docker
-   steps:
-     - name: 'Status'
-       run: kubectl get all
-     - name: 'Deploy'
-       run: kubectl apply -f deployment.yaml
+  steps:
+    - name: 'Status'
+      run: kubectl get all
+    - name: 'Deploy'
+      run: kubectl apply -f deployment.yaml
