@@ -10,11 +10,5 @@ jobs:
     steps:
       - name: Checkout master
         uses: actions/checkout@master
-
-  push_on_rancher:
-  runs-on: self-hosted
-  env:
-    KUBECONFIG: ${{ secrets.KUBECONFIG }}
-  steps:
-    - name: 'Deploy'
-      run: kubectl apply -f deployment.yaml
+      - name: 'Deploy'
+        run: kubectl apply -f deployment.yaml
