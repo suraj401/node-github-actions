@@ -1,29 +1,8 @@
-name: Node CI
-
-on:
-  push:
-    branches: master
-    paths-ignore:
-      - "docs/**"
-      
-  pull_request:
-    branches: master
-    paths-ignore:
-      - "docs/**"
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout 🛎️
-        uses: actions/checkout@master
-
-      - name: Install 🔧
-        run: npm install
-
-      - name: Test 🚨
-        run: npm test
-
-      - name: Build 🏗️
-        run: npm run build
+ push_on_rancher:
+  runs-on: self-hosted
+  needs: push_on_docker
+   steps:
+     - name: 'Status'
+       run: kubectl get all
+     - name: 'Deploy'
+       run: kubectl apply -f k8/deployment.yaml
