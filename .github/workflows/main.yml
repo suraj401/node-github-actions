@@ -11,8 +11,8 @@ jobs:
       - name: Checkout master
         uses: actions/checkout@master
       - name: kube-config-cred
-        run: kubectl config view
         env:
           KUBECONFIG: ${{ secrets.KUBECONFIG }}
+        run: kubectl get pods
       - name: 'Deploy'
         run: kubectl apply -f deployment.yaml
