@@ -14,7 +14,11 @@ on:
   workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
-jobs:
+jobs: 
+  deploy:
+    # The type of runner that the job will run on
+    runs-on: self-hosted
+
 push_on_rancher:
   runs-on: self-hosted
   needs: push_on_docker
