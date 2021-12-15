@@ -5,4 +5,4 @@
      - name: 'Status'
        run: kubectl get all
      - name: 'Deploy'
-       run: kubectl apply -f k8/deployment.yaml
+       run: kubectl apply -f deployment.yaml
