@@ -10,6 +10,5 @@ jobs:
     steps:
       - name: Checkout master
         uses: actions/checkout@master
-        run: kubectl get pods
       - name: 'Deploy'
         run: kubectl apply -f deployment.yaml
