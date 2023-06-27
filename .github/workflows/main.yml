@@ -11,7 +11,7 @@ jobs:
       - name: Checkout master
         uses: actions/checkout@master
         env:
-          KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
+          KUBE_CONFIG: ${{ secrets.KUBECONFIG }}
       - name: 'Deploy'
         run: kubectl apply -f deployment.yaml
       - name: ZAP Scan
